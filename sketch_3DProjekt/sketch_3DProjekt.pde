@@ -1,8 +1,11 @@
 //3D-Projekt
-float rotation = 0;
+float angle;
 
-PVector yAxis = new PVector(0, 1, 0);
-PVector zAxis = new PVector(0, 0, 1);
+Table table;
+float r = 200;
+
+PImage earth;
+PShape globe;
 
 int trackTime;
 
@@ -11,6 +14,13 @@ PVector location2;
 
 void setup() {
   size(800, 600, P3D);
+ // earth = loadImage("earth.jpg");
+
+  noStroke();
+  globe = createShape(SPHERE, r);
+  //globe.setTexture(earth); // billede taget af fordi det tog lang tid at loade
+  
+  
 }
 
 void draw() {
@@ -20,8 +30,8 @@ void draw() {
     JSONObject j = loadJSONObject("https://api.n2yo.com/rest/v1/satellite/positions/25544/41.702/-76.014/0/2/&apiKey=GUEEAL-Z7MBKJ-CPLJWD-4SOY");
     JSONArray positionsJson = j.getJSONArray("positions");
 
-    location1 = new PVector(positionsJson.getJSONObject(0).getFloat("satlongitude"), positionsJson.getJSONObject(0).getFloat("satlatitude"));
-    location2 = new PVector( positionsJson.getJSONObject(1).getFloat("satlongitude"), positionsJson.getJSONObject(1).getFloat("satlatitude"));
+    location1 = new PVector(positionsJson.getJSONObject(0).getFloat("satlongitude"), positionsJson.getJSONObject(0).getFloat("satlatitude"), positionsJson.getJSONObject(0).getFloat("sataltitude"));
+    location2 = new PVector(positionsJson.getJSONObject(1).getFloat("satlongitude"), positionsJson.getJSONObject(1).getFloat("satlatitude"), positionsJson.getJSONObject(1).getFloat("sataltitude"));
 
     println(location1, location2);
 
@@ -30,20 +40,16 @@ void draw() {
 
   background(1);
 
-  rotation+=0.1;
-
-  //midten
-  pushMatrix();
   translate(width*0.5, height*0.5);
-  box(20);
-  popMatrix();
+  rotateY(angle);
+  angle += 0.05;
 
-  //latt
-  pushMatrix();
-  translate(width*0.5, height*0.5);
-  //rotate(rotation, yAxis.x, yAxis.y, yAxis.z);
-  rotate(rotation, zAxis.x, zAxis.y, zAxis.z);
-  translate(100, 0, 0);
-  box(20);
-  popMatrix();
+  lights();
+  fill(200);
+  
+  shape(globe);
+  
+  
+  
+  
 }
