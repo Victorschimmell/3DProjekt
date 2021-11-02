@@ -16,19 +16,7 @@ PVector location;
 PVector position;
 
 void setup() {
-  size(800, 600, P3D);
-  // earth = loadImage("earth.jpg");
-
-  noStroke();
-  globe = createShape(SPHERE, r);
-  //globe.setTexture(earth); // billede taget af fordi det tog lang tid at loade
-}
-
-void draw() {
-
-
- if ( millis() > trackTime + 5000) {
-    JSONObject j = loadJSONObject("https://api.n2yo.com/rest/v1/satellite/positions/25544/41.702/-76.014/0/2/&apiKey=WVZACL-QY9FH2-UFJJ6V-4SRE");
+  JSONObject j = loadJSONObject("https://api.n2yo.com/rest/v1/satellite/positions/25544/41.702/-76.014/0/2/&apiKey=QHR6R9-M2Z5YZ-ZE8NAR-4SSY");
     JSONArray positionsJson = j.getJSONArray("positions");
 
 
@@ -41,6 +29,20 @@ void draw() {
     phi = radians(location.x)+PI;
 
     position = new PVector(r*cos(theta)*cos(phi), -r*sin(theta), -r*cos(theta)*sin(phi));  
+  
+  size(800, 600, P3D);
+  // earth = loadImage("earth.jpg");
+
+  noStroke();
+  globe = createShape(SPHERE, r);
+  //globe.setTexture(earth); // billede taget af fordi det tog lang tid at loade
+}
+
+void draw() {
+
+
+ if ( millis() > trackTime + 5000) {
+    
 
     trackTime = millis();
  }
