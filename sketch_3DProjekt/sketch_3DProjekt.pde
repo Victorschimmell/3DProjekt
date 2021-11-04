@@ -6,7 +6,7 @@ PImage earth;
 PShape globe;
 
 ArrayList<Sat> Sats;
-
+float x;
 void setup() {
 
   size(800, 600, P3D);
@@ -27,17 +27,21 @@ void draw() {
   lights();
 
   ///// GLOBE
+
   noFill();
   stroke(255);
   translate(width*0.5, height*0.5);
+  pushMatrix();
+  x = x+0.012;
+  rotateY(x);
   //shape(globe);
   sphere(r);
+popMatrix();
 
   ////// SAT
   for ( Sat sat : Sats) {
 
     sat.display(); 
-
 
     ///// TEXT
     pushMatrix();
