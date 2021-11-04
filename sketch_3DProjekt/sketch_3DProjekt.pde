@@ -7,10 +7,14 @@ PShape globe;
 
 ArrayList<Sat> Sats;
 float x;
+
+ArrayList<Button> buttons;
+
 void setup() {
 
   size(800, 600, P3D);
   // earth = loadImage("earth.jpg");
+
 
   Sats = new ArrayList<Sat>();
 
@@ -19,6 +23,10 @@ void setup() {
   noStroke();
   globe = createShape(SPHERE, r);
   //globe.setTexture(earth); // billede taget af fordi det tog lang tid at loade
+  buttons = new ArrayList<Button>();
+  buttons.add(new Button(new PVector(width/2, height*0.5), width/5, height/5, "Test", 1));
+  buttons.add(new Button(new PVector(width/2, height*0.1), width/5, height/5, "Test2", 2));
+  buttons.add(new Button(new PVector(width*0.7, height*0.1), width/5, height/5, "Test3", 3));
 }
 
 void draw() {
@@ -36,7 +44,7 @@ void draw() {
   rotateY(x);
   //shape(globe);
   sphere(r);
-popMatrix();
+  popMatrix();
 
   ////// SAT
   for ( Sat sat : Sats) {
@@ -46,8 +54,12 @@ popMatrix();
     ///// TEXT
     pushMatrix();
     translate(-width/2, -height/2);
+    textSize(12);
     text("timestamp: " + sat.timestamp + " seconds", 20, 20);
+    for ( Button b : buttons) {
+      b.display();
+      b.collision();
+    }
     popMatrix();
-    
   }
 }

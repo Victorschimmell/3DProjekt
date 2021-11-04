@@ -4,13 +4,17 @@ class Button{
   
   float knapwidth;
   float knapheight;
+  int id;
   
-  Button(PVector pos_, float w_, float h_, String text_){
+  color farve = (70);
+  
+  Button(PVector pos_, float w_, float h_, String text_, int id_){
     
     knapwidth = w_;
     knapheight = h_;
     pos = pos_;
     text = text_;
+    id = id_;
     
     rectMode(CENTER);
     fill(255,255,255,70);
@@ -19,13 +23,20 @@ class Button{
   }
   
   void display(){
+    fill(farve);
     rect(pos.x, pos.y, knapwidth, knapheight, 10,10,10,10);
+    fill(255);
     text(text,pos.x,pos.y);
   }
   
-  void colission(){
-    if(mouseX>pos.x+knapwidth/2 && mouseX<pos.x-knapwidth/2 && mouseY>pos.y+knapheight/2 && mouseY<pos.y-knapheight/2){
-      println("col");
+  void collision(){
+    if(mouseX<pos.x+knapwidth/2 && mouseX>pos.x-knapwidth/2 && mouseY<pos.y+knapheight/2 && mouseY>pos.y-knapheight/2){
+      println("col" + this.id);
+      farve = 40;
+    }else{
+      if(farve!=70){
+        farve = 70;
+      }
     }
   }
 }
