@@ -31,8 +31,15 @@ class Button{
   
   void collision(){
     if(mouseX<pos.x+knapwidth/2 && mouseX>pos.x-knapwidth/2 && mouseY<pos.y+knapheight/2 && mouseY>pos.y-knapheight/2){
-      println("col" + this.id);
+
       farve = 40;
+      
+      if(mousePressed){
+        
+        Sats.add(new Sat(Sats.size()));
+      }
+      
+      
     }else{
       if(farve!=70){
         farve = 70;

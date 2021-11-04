@@ -13,7 +13,9 @@ class Sat {
   
   float speed, currentangle;
 
-  Sat() {
+  Sat(int id_) {
+    
+    id -= id_;
     JSONObject j = loadJSONObject("https://api.n2yo.com/rest/v1/satellite/positions/"+ id +"/41.702/-76.014/0/2/&apiKey=QHR6R9-M2Z5YZ-ZE8NAR-4SSY");
     JSONArray positionsJson = j.getJSONArray("positions");
     println(j.getJSONObject("info").getString("satname"));
@@ -48,7 +50,7 @@ class Sat {
     pushMatrix();
     rotate(currentangle, rotationAxis.x, rotationAxis.y, rotationAxis.z);
     rotateY(x);
-    translate(position.x, position.y, position.z-(location.z*0.295));
+    translate(position.x, position.y, position.z+(location.z*0.295));
     box(15);
     popMatrix();
     

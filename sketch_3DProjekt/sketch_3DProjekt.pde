@@ -18,15 +18,13 @@ void setup() {
 
   Sats = new ArrayList<Sat>();
 
-  Sats.add(new Sat());
+  
 
   noStroke();
   globe = createShape(SPHERE, r);
   //globe.setTexture(earth); // billede taget af fordi det tog lang tid at loade
   buttons = new ArrayList<Button>();
-  buttons.add(new Button(new PVector(width/2, height*0.5), width/5, height/5, "Test", 1));
-  buttons.add(new Button(new PVector(width/2, height*0.1), width/5, height/5, "Test2", 2));
-  buttons.add(new Button(new PVector(width*0.7, height*0.1), width/5, height/5, "Test3", 3));
+  buttons.add(new Button(new PVector(width/2, height*0.9), width/5, height/5, "New Satelite", 1));
 }
 
 void draw() {
@@ -40,7 +38,7 @@ void draw() {
   stroke(255);
   translate(width*0.5, height*0.5);
   pushMatrix();
-  x = x+0.012;
+  x = x+0.001;
   rotateY(x);
   //shape(globe);
   sphere(r);
@@ -49,17 +47,13 @@ void draw() {
   ////// SAT
   for ( Sat sat : Sats) {
 
-    sat.display(); 
-
-    ///// TEXT
-    pushMatrix();
-    translate(-width/2, -height/2);
-    textSize(12);
-    text("timestamp: " + sat.timestamp + " seconds", 20, 20);
-    for ( Button b : buttons) {
-      b.display();
-      b.collision();
-    }
-    popMatrix();
+    sat.display();
   }
+  pushMatrix();
+  translate(-width/2, -height/2);
+  for ( Button b : buttons) {
+    b.display();
+    b.collision();
+  }
+  popMatrix();
 }
