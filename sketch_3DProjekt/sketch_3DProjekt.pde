@@ -13,7 +13,7 @@ ArrayList<Button> buttons;
 void setup() {
 
   size(800, 600, P3D);
-  // earth = loadImage("earth.jpg");
+  earth = loadImage("earth.jpg");
 
 
   Sats = new ArrayList<Sat>();
@@ -22,7 +22,7 @@ void setup() {
 
   noStroke();
   globe = createShape(SPHERE, r);
-  //globe.setTexture(earth); // billede taget af fordi det tog lang tid at loade
+  globe.setTexture(earth); // billede taget af fordi det tog lang tid at loade
   buttons = new ArrayList<Button>();
   buttons.add(new Button(new PVector(width/2, height*0.9), width/5, height/5, "New Satelite", 1));
 }
@@ -40,8 +40,8 @@ void draw() {
   pushMatrix();
   x = x+0.001;
   rotateY(x);
-  //shape(globe);
-  sphere(r);
+  shape(globe);
+  //sphere(r);
   popMatrix();
 
   ////// SAT
