@@ -12,6 +12,8 @@ class Sat {
   PVector position, position2;
   
   float speed, currentangle;
+  
+  color farve;
 
   Sat(int id_) {
     
@@ -39,12 +41,15 @@ class Sat {
     rotationAxis = position.cross(position2);
     
     angle = PVector.angleBetween(position, position2);
+    
+    farve = color(random(1,255),random(1,255),random(255));
  
   }
 
 
   void display() {
-    fill(255);
+    fill(farve);
+    noStroke();
     currentangle+=angle;
 
     pushMatrix();

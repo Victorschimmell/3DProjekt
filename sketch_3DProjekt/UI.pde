@@ -36,7 +36,7 @@ class Button{
       
       if(mousePressed){
         
-        Sats.add(new Sat(Sats.size()));
+        Sats.add(new Sat(Sats.size()*3));
       }
       
       
