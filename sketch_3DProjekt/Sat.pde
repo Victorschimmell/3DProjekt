@@ -16,14 +16,14 @@ class Sat {
   Sat() {
     JSONObject j = loadJSONObject("https://api.n2yo.com/rest/v1/satellite/positions/"+ id +"/41.702/-76.014/0/2/&apiKey=QHR6R9-M2Z5YZ-ZE8NAR-4SSY");
     JSONArray positionsJson = j.getJSONArray("positions");
-    //JSONArray infoJson = j.getJSONArray("info");
+    println(j.getJSONObject("info").getString("satname"));
 
 
     location = new PVector(positionsJson.getJSONObject(0).getFloat("satlongitude"), positionsJson.getJSONObject(0).getFloat("satlatitude"), positionsJson.getJSONObject(0).getFloat("sataltitude"));
     location2 = new PVector(positionsJson.getJSONObject(1).getFloat("satlongitude"), positionsJson.getJSONObject(1).getFloat("satlatitude"), positionsJson.getJSONObject(1).getFloat("sataltitude"));
 
     timestamp = positionsJson.getJSONObject(0).getInt("timestamp");
-    //println(infoJson.getJSONObject(0).getString("satname"));
+    
     //println(location, timestamp);
 
     theta = radians(location.y);
@@ -38,18 +38,17 @@ class Sat {
     
     angle = PVector.angleBetween(position, position2);
  
-    speed = angle*5;
   }
 
 
   void display() {
     fill(255);
-    currentangle+=speed;
+    currentangle+=angle;
 
     pushMatrix();
     rotate(currentangle, rotationAxis.x, rotationAxis.y, rotationAxis.z);
     translate(position.x, position.y, position.z-(location.z*0.295));
-    box(20);
+    box(15);
     popMatrix();
     
     
