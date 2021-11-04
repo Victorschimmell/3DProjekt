@@ -5,7 +5,7 @@ class Sat {
   
   PVector rotationAxis;
 
-  int timestamp, id = 25544;
+  int timestamp, id = 25544  ;
 
   PVector location, location2;
 
@@ -47,6 +47,7 @@ class Sat {
 
     pushMatrix();
     rotate(currentangle, rotationAxis.x, rotationAxis.y, rotationAxis.z);
+    rotateY(x);
     translate(position.x, position.y, position.z-(location.z*0.295));
     box(15);
     popMatrix();
