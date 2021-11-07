@@ -6,7 +6,7 @@ class Sat {
   PVector rotationAxis;
 
   long timestamp;
-  int id = 25544  ;
+  int id = 25544;
 
   PVector location, location2;
 
@@ -20,7 +20,7 @@ class Sat {
 
     id -= id_;
     try { 
-      JSONObject j = loadJSONObject("https://api.n2yo.com/rest/v1/satellite/positions/"+ id +"/41.702/-76.014/0/2/&apiKey=QHR6R9-M2Z5YZ-ZE8NAR-4SSY");
+      JSONObject j = loadJSONObject("https://api.n2yo.com/rest/v1/satellite/positions/"+ id +"/41.702/-76.014/0/2/&apiKey=WVZACL-QY9FH2-UFJJ6V-4SRE");
       JSONArray positionsJson = j.getJSONArray("positions");
       println(j.getJSONObject("info").getString("satname"));
 
@@ -55,7 +55,13 @@ class Sat {
       if (timestamp !=0) {
         hBoxes.add( new hBox(j.getJSONObject("info").getString("satname"), 20, farve, ft.format(d)));
       } else {
-        println("Dead satelite");
+
+        for (int i = 0; i < Sats.size(); i++) {
+          if (Sats.get(i).timestamp == 0) {
+            Sats.remove(Sats.get(i));
+            println("Dead satelite has been removed", Sats.size());
+          }
+        }
       }
     }
     catch(Exception e) {
@@ -66,16 +72,18 @@ class Sat {
 
 
   void display() {
-    fill(farve);
-    if (paused==false) {
-      currentangle+=(angle);
-    }
+    if (timestamp != 0) {
+      fill(farve);
+      if (paused==false) {
+        currentangle+=(angle);
+      }
 
-    pushMatrix();
-    rotate(currentangle, rotationAxis.x, rotationAxis.y, rotationAxis.z);
-    rotateY(x);
-    translate(position.x, position.y, abs(position.z)+abs(location.z*0.295));
-    box(15);
-    popMatrix();
+      pushMatrix();
+      rotate(currentangle, rotationAxis.x, rotationAxis.y, rotationAxis.z);
+      rotateY(x);
+      translate(position.x, position.y, abs(position.z)+abs(location.z*0.295));
+      box(15);
+      popMatrix();
+    }
   }
 }

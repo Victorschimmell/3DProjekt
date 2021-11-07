@@ -5,6 +5,7 @@ class Button {
   float knapwidth;
   float knapheight;
   int id;
+  int x = 0;
 
   color farve = (230);
 
@@ -39,7 +40,8 @@ class Button {
 
         case 1:
 
-          Sats.add(new Sat(Sats.size()*3));
+          Sats.add(new Sat(Sats.size()));
+          x-=5;
 
           break;
 
