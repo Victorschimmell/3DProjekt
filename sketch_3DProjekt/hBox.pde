@@ -34,7 +34,7 @@ class hBox {
     fill(farve);
     rect(pos.x, pos.y-textAscent(), textWidth(indhold+" | " + date)+5, textAscent()+textDescent());
     fill(1);
-    text(indhold+ " | " +date, pos.x, pos.y);
+    text(indhold+ " | " +date, pos.x, pos.y,1);
 
     textAlign(CENTER, CENTER);
     rectMode(CENTER);

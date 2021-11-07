@@ -26,7 +26,7 @@ class Button {
     fill(farve);
     rect(pos.x, pos.y, knapwidth, knapheight, 10, 10, 10, 10);
     fill(1);
-    text(text, pos.x, pos.y);
+    text(text, pos.x, pos.y,1);
   }
 
   void collision() {
