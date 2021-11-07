@@ -17,7 +17,7 @@ ArrayList<hBox> hBoxes;
 Boolean paused = false;
 Boolean clicked = false;
 
-
+float camXbaseAng = width/2;
 void setup() {
 
   fullScreen( P3D);
@@ -44,7 +44,7 @@ void draw() {
   ///// GLOBE
   noFill();
   stroke(255);
-
+  cameraControl();
 
   pushMatrix();
   translate(width*0.5, height*0.5);
@@ -86,4 +86,26 @@ void mousePressed() {
 
 void mouseReleased() {
   clicked = false;
+}
+void cameraControl() {
+
+  float orbitRadius= (height/2.0) / tan(PI*30.0 / 180.0);
+
+
+  //float ypos= orbitRadius*sin(radians(camYangle+camYdist));
+  float xpos= orbitRadius*cos(radians(camXbaseAng));
+
+  // float zAngle= sqrt(pow(orbitRadius, 2) - pow(camZdist, 2));
+  float zpos= orbitRadius*sin(radians(camXbaseAng));
+
+
+
+  camera(width/2+xpos, height/2, zpos, width/2, height/2, 0, 0, 1, 0);
+  println(camXbaseAng);
+
+  if (mousePressed) {
+
+    float camXdist = mouseX-pmouseX;
+    camXbaseAng = camXbaseAng+camXdist;
+  }
 }
