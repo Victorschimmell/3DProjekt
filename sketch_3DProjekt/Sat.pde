@@ -53,11 +53,12 @@ class Sat {
 
 
       if (timestamp !=0) {
-        hBoxes.add( new hBox(j.getJSONObject("info").getString("satname"), 20, farve, ft.format(d)));
+        hBoxes.add( new hBox(j.getJSONObject("info").getString("satname"), 20, farve, ft.format(d), 1));
       } else {
 
         for (int i = 0; i < Sats.size(); i++) {
           if (Sats.get(i).timestamp == 0) {
+            hBoxes.add( new hBox("Dead satelite", 20, farve, "", 2));
             Sats.remove(Sats.get(i));
             println("Dead satelite has been removed", Sats.size());
           }

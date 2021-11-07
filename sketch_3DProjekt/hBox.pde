@@ -7,14 +7,16 @@ class hBox {
   int textSize;
   color farve;
   String date;
+  int id;
 
 
-  hBox(String input, int textSize_, color farve_, String date_) {
+  hBox(String input, int textSize_, color farve_, String date_, int id_) {
 
     indhold = input;
     textSize = textSize_;
     farve = farve_;
     date = date_;
+    id = id_;
 
     pos = new PVector(10, textAscent()+textDescent());
   }
