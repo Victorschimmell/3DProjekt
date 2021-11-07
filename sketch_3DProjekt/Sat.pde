@@ -31,7 +31,7 @@ class Sat {
       timestamp = positionsJson.getJSONObject(0).getLong("timestamp");
 
       Date d = new java.util.Date(timestamp*1000);
-      java.text.SimpleDateFormat ft = new java.text.SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss zzz");
+      java.text.SimpleDateFormat ft = new java.text.SimpleDateFormat("E dd/MM-yyyy 'at' hh:mm:ss zzz");
       ft.setTimeZone(java.util.TimeZone.getTimeZone("GMT+1"));
 
 
@@ -51,8 +51,8 @@ class Sat {
 
       farve = color(random(1, 255), random(1, 255), random(255));
 
-      if (timestamp !=0) {
 
+      if (timestamp !=0) {
         hBoxes.add( new hBox(j.getJSONObject("info").getString("satname"), 20, farve, ft.format(d)));
       } else {
         println("Dead satelite");
