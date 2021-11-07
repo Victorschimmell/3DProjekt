@@ -64,7 +64,10 @@ void draw() {
   }
 
   popMatrix();
-
+  pushMatrix();
+  translate(width/2, height/2, 0);
+  rotateY(-radians(camXbaseAng-90));
+  translate(-width/2, -height/2, 0);
   for ( Button b : buttons) {
     b.display();
     b.collision();
@@ -78,6 +81,7 @@ void draw() {
   textSize(12);
   fill(255);
   text(round(frameRate)+ " fps", width-textWidth(round(frameRate)+ " fps  "), 20);
+  popMatrix();
 }
 
 void mousePressed() {
