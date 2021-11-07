@@ -30,7 +30,7 @@ class hBox {
     }
     
     fill(farve);
-    rect(pos.x, pos.y, textWidth(indhold)+5, -(10+(textAscent())));
+    rect(pos.x, pos.y-textAscent(), textWidth(indhold)+5, textAscent()+textDescent());
     fill(255);
     text(indhold, pos.x, pos.y);
 

@@ -15,14 +15,14 @@ class Button {
     pos = pos_;
     text = text_;
     id = id_;
+  }
 
+  void display() {
     rectMode(CENTER);
     fill(255, 255, 255, 70);
     textSize(24);
     textAlign(CENTER, CENTER);
-  }
-
-  void display() {
+    
     fill(farve);
     rect(pos.x, pos.y, knapwidth, knapheight, 10, 10, 10, 10);
     fill(1);
@@ -34,7 +34,7 @@ class Button {
 
       farve = 200;
 
-      if(clicked==true){
+      if (clicked==true) {
         switch(id) {
 
         case 1:
@@ -44,16 +44,15 @@ class Button {
           break;
 
         case 2:
-          if(paused==true){
+          if (paused==true) {
             paused=false;
+            text = "Pause";
             println("unpaused");
-          }else{
+          } else {
             paused=true;
+            text = "Unpause";
             println("paused");
           }
-        
-        
-        
         }
         clicked = false;
       }

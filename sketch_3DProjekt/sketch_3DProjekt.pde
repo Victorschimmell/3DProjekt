@@ -30,7 +30,7 @@ void setup() {
   // globe = createShape(SPHERE, r);
   //globe.setTexture(earth); // billede taget af fordi det tog lang tid at loade
 
-  buttons.add(new Button(new PVector(width/2, height*0.9), width/7, height/10, "New Satelite", 1));
+  buttons.add(new Button(new PVector(width*1/4, height*0.9), width/7, height/10, "New Satelite", 1));
   buttons.add(new Button(new PVector(width*3/4, height*0.9), width/7, height/10, "Pause", 2));
 }
 
@@ -38,23 +38,21 @@ void draw() {
   ///// PREP
   background(1);
   lights();
-textSize(12);
-  text(round(frameRate)+ " fps", width-textWidth(round(frameRate)+ " fps  "), 20);
-
   ///// GLOBE
-
   noFill();
   stroke(255);
+
+
   pushMatrix();
   translate(width*0.5, height*0.5);
-  pushMatrix();
+
   if (paused==false) {
-    x = x+(0.460/60*0.295);
+    x = x+(0.460/60*0.295); // 0.460 km/s/framerate*scaleringsfaktor
   }
   rotateY(x);
   // shape(globe);
   sphere(r);
-  popMatrix();
+
 
   ////// SAT
   for ( Sat sat : Sats) {
@@ -73,6 +71,9 @@ textSize(12);
   {
     HB.display();
   }
+
+  textSize(12);
+  text(round(frameRate)+ " fps", width-textWidth(round(frameRate)+ " fps  "), 20);
 }
 
 void mousePressed() {
