@@ -17,7 +17,7 @@ ArrayList<hBox> hBoxes;
 Boolean paused = false;
 Boolean clicked = false;
 
-float camXbaseAng = width/2;
+float camXbaseAng = 90;
 void setup() {
 
   fullScreen( P3D);
