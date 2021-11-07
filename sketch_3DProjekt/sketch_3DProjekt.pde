@@ -31,14 +31,15 @@ void setup() {
   //globe.setTexture(earth); // billede taget af fordi det tog lang tid at loade
 
   buttons.add(new Button(new PVector(width/2, height*0.9), width/7, height/10, "New Satelite", 1));
-  buttons.add(new Button(new PVector(width/2, height*0.1), width/7, height/10, "Pause", 2));
+  buttons.add(new Button(new PVector(width*3/4, height*0.9), width/7, height/10, "Pause", 2));
 }
 
 void draw() {
   ///// PREP
   background(1);
   lights();
-
+textSize(12);
+  text(round(frameRate)+ " fps", width-textWidth(round(frameRate)+ " fps  "), 20);
 
   ///// GLOBE
 

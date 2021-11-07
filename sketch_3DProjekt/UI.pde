@@ -6,7 +6,7 @@ class Button {
   float knapheight;
   int id;
 
-  color farve = (70);
+  color farve = (230);
 
   Button(PVector pos_, float w_, float h_, String text_, int id_) {
 
@@ -25,14 +25,14 @@ class Button {
   void display() {
     fill(farve);
     rect(pos.x, pos.y, knapwidth, knapheight, 10, 10, 10, 10);
-    fill(255);
+    fill(1);
     text(text, pos.x, pos.y);
   }
 
   void collision() {
     if (mouseX<pos.x+knapwidth/2 && mouseX>pos.x-knapwidth/2 && mouseY<pos.y+knapheight/2 && mouseY>pos.y-knapheight/2) {
 
-      farve = 40;
+      farve = 200;
 
       if(clicked==true){
         switch(id) {
@@ -58,8 +58,8 @@ class Button {
         clicked = false;
       }
     } else {
-      if (farve!=70) {
-        farve = 70;
+      if (farve!=230) {
+        farve = 230;
       }
     }
   }
