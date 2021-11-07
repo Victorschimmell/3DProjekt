@@ -18,7 +18,7 @@ class Sat {
 
   Sat(int id_) {
 
-    id -= id_;
+    id = id_;
     try { 
       JSONObject j = loadJSONObject("https://api.n2yo.com/rest/v1/satellite/positions/"+ id +"/41.702/-76.014/0/2/&apiKey=WVZACL-QY9FH2-UFJJ6V-4SRE");
       JSONArray positionsJson = j.getJSONArray("positions");
