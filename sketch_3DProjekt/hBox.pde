@@ -14,7 +14,7 @@ class hBox {
     textSize = textSize_;
     farve = farve_;
 
-    pos = new PVector(0, 200-(15+(textAscent())-textDescent()));
+    pos = new PVector(0,(textAscent())-textDescent());
 
   }
 
@@ -23,7 +23,7 @@ class hBox {
     textAlign(CORNER, RIGHT);
     rectMode(CORNER);
     fill(farve);
-    rect(pos.x, pos.y+5+textDescent(), textWidth(indhold)+5, -(10+(textAscent())));
+    rect(pos.x, pos.y, textWidth(indhold)+5, -(10+(textAscent())));
     fill(1);
     text(indhold, pos.x, pos.y);
 
