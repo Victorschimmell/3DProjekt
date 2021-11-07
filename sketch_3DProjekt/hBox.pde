@@ -14,7 +14,7 @@ class hBox {
     textSize = textSize_;
     farve = farve_;
 
-    pos = new PVector(200, 200-(15+(textAscent())-textDescent()));
+    pos = new PVector(0, 200-(15+(textAscent())-textDescent()));
 
   }
 

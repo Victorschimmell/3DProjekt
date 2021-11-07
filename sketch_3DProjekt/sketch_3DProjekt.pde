@@ -16,7 +16,7 @@ ArrayList<hBox> hBoxes;
 void setup() {
 
   fullScreen( P3D);
-  earth = loadImage("earth.jpg");
+ // earth = loadImage("earth.jpg");
 
   Sats = new ArrayList<Sat>();
   buttons = new ArrayList<Button>();
