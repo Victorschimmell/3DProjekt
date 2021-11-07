@@ -19,7 +19,7 @@ Boolean clicked = false;
 void setup() {
 
   fullScreen( P3D);
- // earth = loadImage("earth.jpg");
+  // earth = loadImage("earth.jpg");
 
   Sats = new ArrayList<Sat>();
   buttons = new ArrayList<Button>();
@@ -39,6 +39,7 @@ void draw() {
   background(1);
   lights();
 
+
   ///// GLOBE
 
   noFill();
@@ -46,7 +47,7 @@ void draw() {
   pushMatrix();
   translate(width*0.5, height*0.5);
   pushMatrix();
-  if(paused==false){
+  if (paused==false) {
     x = x+(0.460/60*0.295);
   }
   rotateY(x);
@@ -66,18 +67,17 @@ void draw() {
     b.display();
     b.collision();
   }
-  
-    for (hBox HB : hBoxes)
+
+  for (hBox HB : hBoxes)
   {
     HB.display();
   }
 }
 
-void mousePressed(){
+void mousePressed() {
   clicked = true;
 }
 
-void mouseReleased(){
+void mouseReleased() {
   clicked = false;
-  
 }
