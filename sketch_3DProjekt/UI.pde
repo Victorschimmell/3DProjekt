@@ -40,7 +40,7 @@ class Button {
 
         case 1:
 
-          Sats.add(new Sat(Sats.size()));
+          Sats.add(new Sat(Sats.size()+x));
           x-=5;
 
           break;
