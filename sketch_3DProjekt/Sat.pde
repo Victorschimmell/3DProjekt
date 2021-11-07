@@ -18,15 +18,21 @@ class Sat {
   Sat(int id_) {
     
     id -= id_;
+   try{ 
     JSONObject j = loadJSONObject("https://api.n2yo.com/rest/v1/satellite/positions/"+ id +"/41.702/-76.014/0/2/&apiKey=QHR6R9-M2Z5YZ-ZE8NAR-4SSY");
     JSONArray positionsJson = j.getJSONArray("positions");
     println(j.getJSONObject("info").getString("satname"));
-
+    
 
     location = new PVector(positionsJson.getJSONObject(0).getFloat("satlongitude"), positionsJson.getJSONObject(0).getFloat("satlatitude"), positionsJson.getJSONObject(0).getFloat("sataltitude"));
     location2 = new PVector(positionsJson.getJSONObject(1).getFloat("satlongitude"), positionsJson.getJSONObject(1).getFloat("satlatitude"), positionsJson.getJSONObject(1).getFloat("sataltitude"));
 
     timestamp = positionsJson.getJSONObject(0).getInt("timestamp");
+    
+    Date d = new Date(timestamp);
+    SimpleDateFormat ft = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+    
+    println("Current time: "+ ft.format(d), ", Unix timestamp: " + timestamp);
 
     theta = radians(location.y);
     theta2 = radians(location2.y);
@@ -42,7 +48,14 @@ class Sat {
     
     farve = color(random(1,255),random(1,255),random(255));
     
-    hBoxes.add( new hBox(j.getJSONObject("info").getString("satname"), 20, farve));
+    hBoxes.add( new hBox(j.getJSONObject("info").getString("satname"), 20, farve, ft.format(d)));
+   }
+   catch(Exception e){
+     
+     System.out.println("Exception: " + e);
+     
+   }
+   
  
   }
 

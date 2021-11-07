@@ -1,10 +1,12 @@
 //3D-Projekt
+import java.util.*;
+import java.text.*;
+
 Table table;
 float r = 200;
 
 PImage earth;
 PShape globe;
-
 
 float x;
 
@@ -19,6 +21,7 @@ Boolean clicked = false;
 void setup() {
 
   fullScreen( P3D);
+  frameRate(60);
   // earth = loadImage("earth.jpg");
 
   Sats = new ArrayList<Sat>();
@@ -73,6 +76,7 @@ void draw() {
   }
 
   textSize(12);
+  fill(255);
   text(round(frameRate)+ " fps", width-textWidth(round(frameRate)+ " fps  "), 20);
 }
 

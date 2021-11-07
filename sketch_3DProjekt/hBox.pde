@@ -6,13 +6,15 @@ class hBox {
 
   int textSize;
   color farve;
+  String date;
 
 
-  hBox(String input, int textSize_, color farve_) {
+  hBox(String input, int textSize_, color farve_, String date_) {
 
     indhold = input;
     textSize = textSize_;
     farve = farve_;
+    date = date_;
 
     pos = new PVector(10, textAscent()+textDescent());
   }
@@ -30,9 +32,9 @@ class hBox {
     }
     
     fill(farve);
-    rect(pos.x, pos.y-textAscent(), textWidth(indhold)+5, textAscent()+textDescent());
-    fill(255);
-    text(indhold, pos.x, pos.y);
+    rect(pos.x, pos.y-textAscent(), textWidth(indhold+" | " + date)+5, textAscent()+textDescent());
+    fill(1);
+    text(indhold+ " | " +date, pos.x, pos.y);
 
     textAlign(CENTER, CENTER);
     rectMode(CENTER);
