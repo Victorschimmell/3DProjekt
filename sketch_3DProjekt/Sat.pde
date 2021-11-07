@@ -27,8 +27,6 @@ class Sat {
     location2 = new PVector(positionsJson.getJSONObject(1).getFloat("satlongitude"), positionsJson.getJSONObject(1).getFloat("satlatitude"), positionsJson.getJSONObject(1).getFloat("sataltitude"));
 
     timestamp = positionsJson.getJSONObject(0).getInt("timestamp");
-    
-    //println(location, timestamp);
 
     theta = radians(location.y);
     theta2 = radians(location2.y);
