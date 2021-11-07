@@ -40,7 +40,6 @@ void setup() {
 void draw() {
   ///// PREP
   background(1);
-  lights();
   ///// GLOBE
   noFill();
   stroke(255);
