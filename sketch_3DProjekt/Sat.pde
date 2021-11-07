@@ -49,7 +49,6 @@ class Sat {
 
   void display() {
     fill(farve);
-    noStroke();
     if(paused==false){
       currentangle+=(angle*5);
     }
