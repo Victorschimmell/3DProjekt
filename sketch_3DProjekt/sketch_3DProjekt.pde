@@ -5,26 +5,29 @@ float r = 200;
 PImage earth;
 PShape globe;
 
-ArrayList<Sat> Sats;
+
 float x;
 
+ArrayList<Sat> Sats;
 ArrayList<Button> buttons;
+ArrayList<hBox> hBoxes;
+
 
 void setup() {
 
   fullScreen( P3D);
   earth = loadImage("earth.jpg");
 
-
   Sats = new ArrayList<Sat>();
+  buttons = new ArrayList<Button>();
+  hBoxes = new ArrayList<hBox>();
 
-  
 
   noStroke();
- // globe = createShape(SPHERE, r);
+  // globe = createShape(SPHERE, r);
   //globe.setTexture(earth); // billede taget af fordi det tog lang tid at loade
-  buttons = new ArrayList<Button>();
-  buttons.add(new Button(new PVector(width/2, height*0.9), width/5, height/5, "New Satelite", 1));
+
+  buttons.add(new Button(new PVector(width/2, height*0.9), width/7, height/10, "New Satelite", 1));
 }
 
 void draw() {
@@ -41,7 +44,7 @@ void draw() {
   pushMatrix();
   x = x+0.001;
   rotateY(x);
- // shape(globe);
+  // shape(globe);
   sphere(r);
   popMatrix();
 
@@ -50,12 +53,16 @@ void draw() {
 
     sat.display();
   }
-  
+
   popMatrix();
 
   for ( Button b : buttons) {
     b.display();
     b.collision();
   }
-
+  
+    for (hBox HB : hBoxes)
+  {
+    HB.display();
+  }
 }

@@ -41,6 +41,8 @@ class Sat {
     angle = PVector.angleBetween(position, position2);
     
     farve = color(random(1,255),random(1,255),random(255));
+    
+    hBoxes.add( new hBox(j.getJSONObject("info").getString("satname"), 20, farve));
  
   }
 
