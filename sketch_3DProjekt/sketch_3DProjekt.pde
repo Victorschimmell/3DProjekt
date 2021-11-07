@@ -12,6 +12,9 @@ ArrayList<Sat> Sats;
 ArrayList<Button> buttons;
 ArrayList<hBox> hBoxes;
 
+Boolean paused = false;
+Boolean clicked = false;
+
 
 void setup() {
 
@@ -28,6 +31,7 @@ void setup() {
   //globe.setTexture(earth); // billede taget af fordi det tog lang tid at loade
 
   buttons.add(new Button(new PVector(width/2, height*0.9), width/7, height/10, "New Satelite", 1));
+  buttons.add(new Button(new PVector(width/2, height*0.1), width/7, height/10, "Pause", 2));
 }
 
 void draw() {
@@ -42,7 +46,9 @@ void draw() {
   pushMatrix();
   translate(width*0.5, height*0.5);
   pushMatrix();
-  x = x+0.001;
+  if(paused==false){
+    x = x+0.001;
+  }
   rotateY(x);
   // shape(globe);
   sphere(r);
@@ -65,4 +71,8 @@ void draw() {
   {
     HB.display();
   }
+}
+
+void mouseClicked(){
+  clicked = true;
 }

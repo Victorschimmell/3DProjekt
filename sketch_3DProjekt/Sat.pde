@@ -50,7 +50,9 @@ class Sat {
   void display() {
     fill(farve);
     noStroke();
-    currentangle+=(angle*5);
+    if(paused==false){
+      currentangle+=(angle*5);
+    }
 
     pushMatrix();
     rotate(currentangle, rotationAxis.x, rotationAxis.y, rotationAxis.z);

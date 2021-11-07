@@ -34,8 +34,7 @@ class Button {
 
       farve = 40;
 
-      if (mousePressed) {
-
+      if(clicked==true){
         switch(id) {
 
         case 1:
@@ -45,11 +44,18 @@ class Button {
           break;
 
         case 2:
-        
+          if(paused==true){
+            paused=false;
+            println("unpaused");
+          }else{
+            paused=true;
+            println("paused");
+          }
         
         
         
         }
+        clicked = false;
       }
     } else {
       if (farve!=70) {
