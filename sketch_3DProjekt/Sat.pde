@@ -50,13 +50,13 @@ class Sat {
   void display() {
     fill(farve);
     if(paused==false){
-      currentangle+=(angle*5);
+      currentangle+=(angle);
     }
 
     pushMatrix();
     rotate(currentangle, rotationAxis.x, rotationAxis.y, rotationAxis.z);
     rotateY(x);
-    translate(position.x, position.y, position.z+(location.z*0.295));
+    translate(position.x, position.y, position.z-abs(location.z*0.295));
     box(15);
     popMatrix();
     

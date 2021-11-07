@@ -47,7 +47,7 @@ void draw() {
   translate(width*0.5, height*0.5);
   pushMatrix();
   if(paused==false){
-    x = x+(0.460/60*0.295*5);
+    x = x+(0.460/60*0.295);
   }
   rotateY(x);
   // shape(globe);
@@ -73,6 +73,11 @@ void draw() {
   }
 }
 
-void mouseClicked(){
+void mousePressed(){
   clicked = true;
+}
+
+void mouseReleased(){
+  clicked = false;
+  
 }
