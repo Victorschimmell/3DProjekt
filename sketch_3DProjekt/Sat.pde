@@ -82,8 +82,8 @@ class Sat {
       pushMatrix();
       rotate(currentangle, rotationAxis.x, rotationAxis.y, rotationAxis.z);
       rotateY(x);
-      translate(position.x, position.y, abs(position.z)+abs(location.z*0.295));
-      box(15);
+      translate(position.x, position.y, abs(position.z)+abs(location.z*0.05));
+      box(5);
       popMatrix();
     }
   }

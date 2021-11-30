@@ -22,7 +22,7 @@ void setup() {
 
   fullScreen( P3D);
   frameRate(60);
-  earth = loadImage("earth.jpg");
+ // earth = loadImage("earth.jpg");
 
   Sats = new ArrayList<Sat>();
   buttons = new ArrayList<Button>();
@@ -30,8 +30,8 @@ void setup() {
 
 
   noStroke();
-  globe = createShape(SPHERE, r);
-  globe.setTexture(earth); // billede taget af fordi det tog lang tid at loade
+  //globe = createShape(SPHERE, r);
+ // globe.setTexture(earth); // billede taget af fordi det tog lang tid at loade
 
   buttons.add(new Button(new PVector(width*1/4, height*0.9), width/7, height/10, "New Satelite", 1));
   buttons.add(new Button(new PVector(width*3/4, height*0.9), width/7, height/10, "Pause", 2));
@@ -52,8 +52,8 @@ void draw() {
     x = x+(0.460/60*0.295); // 0.460 km/s/framerate*scaleringsfaktor
   }
   rotateY(x);
-  shape(globe);
-  //sphere(r);
+  //shape(globe);
+  sphere(r);
 
 
   ////// SAT
