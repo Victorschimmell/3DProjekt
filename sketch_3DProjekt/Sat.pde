@@ -76,7 +76,7 @@ class Sat {
     if (timestamp != 0) {
       fill(farve);
       if (paused==false) {
-        currentangle+=(angle);
+        currentangle+=(angle*0.0077175926);
       }
 
       pushMatrix();
